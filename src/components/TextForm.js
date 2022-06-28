@@ -31,6 +31,16 @@ export default function TextForm(props) {
     navigator.clipboard.writeText(text.value);
     props.showAlert("Text Copyed", "success");
   }
+
+  let wordsCount = (text)=>{
+    let count=0;
+    let arr = text.split(" ");
+    for (let index = 0; index < arr.length; index++) {
+        if(arr[index]!=="") count++;
+    }
+    console.log(count);
+    return count;
+  }
   const [text, setText] = useState(''); //useState is a hook
   return (
     <>
@@ -48,8 +58,8 @@ export default function TextForm(props) {
     {/*div.container*/}
     <div className="container my-3">
         <h1>Your Text Summary</h1>
-        <p>{text.split(" ").length} words and {text.length} characters</p>
-        <p>Reading Time : {0.008*text.split(" ").length} minutes</p>
+        <p>{wordsCount(text)} words and {text.length} characters</p>
+        <p>Reading Time : {0.008*wordsCount(text)} minutes</p>
         <h3>Preview</h3>
         <p>{text.length>0 ? text : "Enter the text to preview"}</p>
     </div>
