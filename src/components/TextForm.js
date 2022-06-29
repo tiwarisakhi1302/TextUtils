@@ -33,13 +33,25 @@ export default function TextForm(props) {
     props.showAlert("Text Copyed", "success");
   }
 
+  const handleCapitaliseFirstCharacterClick = ()=>{
+    let Text=document.getElementById("myBox").value;
+    let arr = Text.split(" ");
+    let s="";
+    for (let index = 0; index < arr.length; index++) {
+        if(arr[index]!==""){
+          let str=arr[index].charAt(0).toUpperCase()+arr[index].slice(1)+" ";
+          s+=str
+        }
+    }
+    setText(s);
+  }
+
   let wordsCount = (text)=>{
     let count=0;
     let arr = text.split(" ");
     for (let index = 0; index < arr.length; index++) {
         if(arr[index]!=="") count++;
     }
-    console.log(count);
     return count;
   }
   const [text, setText] = useState(''); //useState is a hook
@@ -55,6 +67,7 @@ export default function TextForm(props) {
         <button disabled={text.length===0} type="button" className="btn  my-3 mx-2" style={{backgroundColor: props.mode==="light" ? "#0000FF" : "#282828", color:  "white"}} onClick={handleLWClick}>Convert to LowerCase</button>
         <button disabled={text.length===0} type="button" className="btn  my-3 mx-2" style={{backgroundColor: props.mode==="light" ? "#0000FF" : "#282828", color:  "white"}} onClick={handleClearClick}>Clear Text</button>
         <button disabled={text.length===0} type="button" className="btn  my-3 mx-2" style={{backgroundColor: props.mode==="light" ? "#0000FF" : "#282828" , color:  "white"}} onClick={handleCopyClick}>Copy Text</button>
+        <button disabled={text.length===0} type="button" className="btn  my-3 mx-2" style={{backgroundColor: props.mode==="light" ? "#0000FF" : "#282828" , color:  "white"}} onClick={handleCapitaliseFirstCharacterClick}>Capitalise First Character</button>
     </div>
     {/*div.container*/}
     <div className="container my-3">
