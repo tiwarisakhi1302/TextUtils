@@ -43,6 +43,7 @@ function App() {
       <Route exact path="/about" element={<About mode={mode} toggleMode={toggleMode}/>}/>
       </Routes>
     </BrowserRouter>
+    <p style={{position: "fixed", bottom: 0, right: "7px"}}>Made by <strong>Sakshi Tiwari</strong></p>
     </>
   );
 }
